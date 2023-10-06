@@ -1,0 +1,4 @@
+ch341-dkms/
+*.substvars
+*.debhelper*
+files

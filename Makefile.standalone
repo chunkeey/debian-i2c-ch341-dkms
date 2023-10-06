@@ -1,0 +1,20 @@
+# fallback to the current kernel source
+KSRC ?= /lib/modules/$(shell uname -r)/build
+
+KMOD_SRC ?= $(CURDIR)
+
+# Don't build any of the other drivers
+#KMOD_OPTIONS +=
+#EXTRA_CFLAGS += -DDEBUG
+
+obj-m	+= ch341-core.o
+obj-m	+= gpio-ch341.o
+obj-m	+= i2c-ch341.o
+
+all:
+	$(MAKE) -C $(KSRC) M=$(KMOD_SRC) $(KMOD_OPTIONS) $(MAKECMDGOALS) EXTRA_CFLAGS="$(EXTRA_CFLAGS)"
+
+.PHONY: all clean
+
+clean:
+	$(MAKE) -C $(KSRC) M=$(KMOD_SRC) clean $(KMOD_OPTIONS)

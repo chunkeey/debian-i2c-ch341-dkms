@@ -1,0 +1,26 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+include /usr/share/dpkg/pkg-info.mk
+
+name = $(DEB_SOURCE)
+version	 = $(DEB_VERSION_UPSTREAM)
+
+%:
+	dh $@
+
+build:
+	@echo "=============== BUILD =============="
+
+override_dh_auto_build:
+
+override_dh_dkms:
+	dh_dkms -p$(name)-dkms -V $(version)
+
+override_dh_auto_install:
+	# v4l2loopback-dkms
+	dh_installdirs -p$(name)-dkms usr/src/$(name)-$(version)
+	dh_install -p$(name)-dkms Makefile usr/src/$(name)-$(version)
+	dh_install -p$(name)-dkms *.[chS]  usr/src/$(name)-$(version)

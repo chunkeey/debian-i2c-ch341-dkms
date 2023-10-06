@@ -1,0 +1,22 @@
+Source: ch341
+Section: kernel
+Priority: optional
+Maintainer: Christian Lamparter <chunkeey@gmail.com>
+Build-Depends: debhelper-compat (= 13),
+ dh-sequence-dkms,
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
+Homepage: https://github.com/umlaeute/v4l2loopback
+Vcs-Git: https://salsa.debian.org/debian/v4l2loopback.git
+Vcs-Browser: https://salsa.debian.org/debian/v4l2loopback
+Testsuite: autopkgtest-pkg-dkms
+
+Package: ch341-dkms
+Architecture: all
+Depends:
+ ${misc:Depends},
+Description: Source for the ch341 driver (DKMS)
+ This module allows you to utilize the ch341 for GPIO/I2C.
+ .
+ This package provides the source code for the ch341 kernel modules
+ to be built with dkms.

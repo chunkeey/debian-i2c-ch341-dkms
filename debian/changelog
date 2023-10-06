@@ -1,0 +1,5 @@
+ch341 (0.6) unstable; urgency=medium
+
+  * Copied from https://patchwork.ozlabs.org/project/linux-i2c/list/?series=305027
+
+ -- Christian Lamparter <chunkeey@gmail.com>  Fri, 05 Oct 2023 18:22:57 +0200
